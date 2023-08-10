@@ -12,17 +12,17 @@ abstract contract PausableSelective {
     /**
      * @dev Revert with this custom error when array lengths do not match.
      */
-    error ArrayLengthMismatch();
+    error PausableSelective_ArrayLengthMismatch();
 
     /**
      * @dev Revert with this custom error when a function is called while paused.
      */
-    error FunctionIsPaused(bytes4 functionSelector);
+    error PausableSelective_FunctionIsPaused(bytes4 functionSelector);
 
     /**
      * @dev Emitted when a functions pause state is changed
      */
-    event FunctionIsPausedUpdate(
+    event PausableSelective_FunctionIsPausedUpdate(
         address indexed sender,
         bytes4 indexed functionSelector,
         bool indexed isPaused
@@ -38,7 +38,9 @@ abstract contract PausableSelective {
      */
     modifier whenNotPausedSelective(bool _pauseAfterCall) {
         if (functionIsPaused[_msgSigPausableSelective()]) {
-            revert FunctionIsPaused(_msgSigPausableSelective());
+            revert PausableSelective_FunctionIsPaused(
+                _msgSigPausableSelective()
+            );
         }
         _;
         functionIsPaused[_msgSigPausableSelective()] = _pauseAfterCall;
@@ -52,7 +54,7 @@ abstract contract PausableSelective {
         bool _isPaused
     ) internal virtual {
         functionIsPaused[_functionSelector] = _isPaused;
-        emit FunctionIsPausedUpdate(
+        emit PausableSelective_FunctionIsPausedUpdate(
             _msgSenderPausableSelective(),
             _functionSelector,
             _isPaused
@@ -67,12 +69,12 @@ abstract contract PausableSelective {
         bool[] calldata _isPaused
     ) internal virtual {
         if (_selectors.length != _isPaused.length) {
-            revert ArrayLengthMismatch();
+            revert PausableSelective_ArrayLengthMismatch();
         }
 
         for (uint256 i = 0; i < _selectors.length; i++) {
             functionIsPaused[_selectors[i]] = _isPaused[i];
-            emit FunctionIsPausedUpdate(
+            emit PausableSelective_FunctionIsPausedUpdate(
                 _msgSenderPausableSelective(),
                 _selectors[i],
                 _isPaused[i]
