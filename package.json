@@ -1,5 +1,5 @@
 {
-  "name": "@uintgroup/selective-pausable",
+  "name": "@uintgroup/pausable-selective",
   "version": "1.0.2",
   "description": "An expansion on OpenZeppelin's Pausable.sol. This contract adds the ability to pause each function by its selector.",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uintgroup/selective-pausable.git"
+    "url": "git+https://github.com/uintgroup/pausable-selective.git"
   },
   "keywords": [
     "solidity",
@@ -23,9 +23,9 @@
   "author": "uintgroup",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/uintgroup/selective-pausable/issues"
+    "url": "https://github.com/uintgroup/pausable-selective/issues"
   },
-  "homepage": "https://github.com/uintgroup/selective-pausable#readme",
+  "homepage": "https://github.com/uintgroup/pausable-selective#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
