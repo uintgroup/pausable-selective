@@ -1,4 +1,4 @@
-# Selective Pausable
+# Pausable-Selective
 
 An expansion on OpenZeppelin's Pausable.sol contract, which adds the ability to pause/unpause a function by
 its selector.
