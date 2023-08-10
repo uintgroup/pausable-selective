@@ -37,22 +37,26 @@ abstract contract SelectivePausable {
      * @dev Reverts if the function of the function selector in _msgSig() is paused.
      */
     modifier whenNotPausedSelective(bool _pauseAfterCall) {
-        if (functionIsPaused[_msgSig()]) {
-            revert FunctionIsPaused(_msgSig());
+        if (functionIsPaused[_msgSigPausableSelective()]) {
+            revert FunctionIsPaused(_msgSigPausableSelective());
         }
         _;
-        functionIsPaused[_msgSig()] = _pauseAfterCall;
+        functionIsPaused[_msgSigPausableSelective()] = _pauseAfterCall;
     }
 
     /**
      * @dev Modifies pause state of a single function.
      */
-    function _setIsPaused(
+    function _setFunctionIsPaused(
         bytes4 _functionSelector,
         bool _isPaused
     ) internal virtual {
         functionIsPaused[_functionSelector] = _isPaused;
-        emit FunctionIsPausedUpdate(_msgSender(), _functionSelector, _isPaused);
+        emit FunctionIsPausedUpdate(
+            _msgSenderPausableSelective(),
+            _functionSelector,
+            _isPaused
+        );
     }
 
     /**
@@ -69,7 +73,7 @@ abstract contract SelectivePausable {
         for (uint256 i = 0; i < _selectors.length; i++) {
             functionIsPaused[_selectors[i]] = _isPaused[i];
             emit FunctionIsPausedUpdate(
-                _msgSender(),
+                _msgSenderPausableSelective(),
                 _selectors[i],
                 _isPaused[i]
             );
@@ -79,14 +83,19 @@ abstract contract SelectivePausable {
     /**
      * @dev Replaces need to import OpenZeppelin's Context.sol. Returns the msg.sender.
      */
-    function _msgSender() internal view virtual returns (address) {
+    function _msgSenderPausableSelective()
+        internal
+        view
+        virtual
+        returns (address)
+    {
         return msg.sender;
     }
 
     /**
      * @dev Returns the msg.sig (function selector).
      */
-    function _msgSig() internal view virtual returns (bytes4) {
+    function _msgSigPausableSelective() internal view virtual returns (bytes4) {
         return msg.sig;
     }
 }
