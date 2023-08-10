@@ -1,0 +1,29 @@
+{
+  "name": "selective-pausable",
+  "version": "1.0.0",
+  "description": "An expansion on OpenZeppelin's Pausable.sol. This contract adds the ability to pause each function by its selector.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uintgroup/selective-pausable.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "evm",
+    "smart",
+    "contract",
+    "pausable",
+    "openzeppelin"
+  ],
+  "author": "uintgroup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uintgroup/selective-pausable/issues"
+  },
+  "homepage": "https://github.com/uintgroup/selective-pausable#readme"
+}
