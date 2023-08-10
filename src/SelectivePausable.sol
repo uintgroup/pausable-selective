@@ -2,13 +2,13 @@
 pragma solidity ^0.8.21;
 
 /**
- * @title SelectivePause
+ * @title SelectivePausable
  * @author @uintgroup @curi0n-s
  * @notice pauses contract functions using each function's selector
  * @dev replaces OpenZeppelin's Pausable.sol (whenNotPaused would conflict)
  */
 
-abstract contract SelectivePause {
+abstract contract SelectivePausable {
     // @notice revert with this custom error when array lengths do not match
     error ArrayLengthMismatch();
 

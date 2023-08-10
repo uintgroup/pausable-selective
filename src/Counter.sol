@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {SelectivePause} from "./SelectivePause.sol";
+import {SelectivePausable} from "./SelectivePausable.sol";
 
-contract Counter {
+contract Counter is SelectivePausable {
     uint256 public number;
 
     function setNumber(uint256 newNumber) public whenNotPaused(false) {
