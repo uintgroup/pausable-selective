@@ -47,7 +47,7 @@ abstract contract SelectivePausable {
     /**
      * @dev Modifies pause state of a single function.
      */
-    function _setIsPaused(
+    function _setFunctionIsPaused(
         bytes4 _functionSelector,
         bool _isPaused
     ) internal virtual {
