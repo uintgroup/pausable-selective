@@ -1,6 +1,6 @@
 {
   "name": "@uintgroup/pausable-selective",
-  "version": "1.0.4",
+  "version": "0.0.1",
   "description": "An expansion on OpenZeppelin's Pausable.sol. This contract adds the ability to pause each function by its selector.",
   "main": "index.js",
   "directories": {
