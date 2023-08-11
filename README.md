@@ -7,4 +7,4 @@ This contract can work instead of, or along side the OpenZeppelin Pausable.sol c
 
 This contract is in development and should only be used after performing independent testing.
 
-Install with: `npm i @uintgroup/selective-pausable` or `forge install uintgroup/pausable-selective`
+Install with: `npm i @uintgroup/pausable-selective` or `forge install uintgroup/pausable-selective`
